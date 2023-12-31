@@ -1,0 +1,2 @@
+Create file properties.txt in this dir and paste there this line to add token to application
+token=your token
