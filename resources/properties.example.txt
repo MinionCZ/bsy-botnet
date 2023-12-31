@@ -1,2 +1,3 @@
-Create file properties.txt in this dir and paste there this line to add token to application
+Create file properties.txt in this dir and paste there this lines to add token to application
 token=your token
+image_mode=fractal/random - choose only one

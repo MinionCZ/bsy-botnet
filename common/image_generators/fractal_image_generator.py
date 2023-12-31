@@ -30,7 +30,7 @@ def calculate_pixel_color(x: int,
 
 
 def generate_fractal_image(horizontal_size: int, vertical_size: int) -> io.BytesIO:
-    n = random.randint(10, 30)
+    n = random.randint(10, 60)
     image_payload = numpy.zeros((vertical_size, horizontal_size, 3), dtype="uint8")
     offset = complex(random.uniform(-1.0, 1.0), random.uniform(-1.0, 1.0))
     starting_value = complex(random.uniform(-2.0, 0.0), random.uniform(-2.0, 0.0))

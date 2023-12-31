@@ -3,6 +3,8 @@ from typing import List
 import dropbox
 from dropbox.files import FolderMetadata
 
+from common.dataclasses.properties import get_property, Properties
+
 __token = ""
 
 
@@ -15,8 +17,7 @@ class DropboxFolders(enum.Enum):
 
 def init_dropbox() -> None:
     global __token
-    with open("../resources/properties.txt") as props:
-        __token = props.readline().split("=")[1]
+    __token = get_property(Properties.TOKEN)
 
 
 def list_files(path: str = "") -> List[FolderMetadata]:
