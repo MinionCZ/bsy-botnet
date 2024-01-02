@@ -5,7 +5,7 @@ from pydantic import BaseModel
 import enum
 
 
-class CommandType(enum.Enum):
+class CommandTypes(enum.Enum):
     LS = "ls"
     ID = "id"
     W = "w"
@@ -20,13 +20,13 @@ class CommandStatus(enum.Enum):
 
 class CommandExecutionRequest(BaseModel):
     bot_id: uuid.UUID
-    command: CommandType
+    command: CommandTypes
     param: str
 
 
 class CommandExecutionResult(BaseModel):
     bot_id: uuid.UUID
-    command: CommandType
+    command: CommandTypes
     param: str
     status: CommandStatus
     results: List[str]

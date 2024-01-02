@@ -4,6 +4,7 @@ import time
 from typing import List
 
 from common.dataclasses.heartbeat import Heartbeat
+from master.src.dataclasses.context import is_running
 from master.src.dataclasses.properties import get_properties
 from master.src.dropbox_handler import download_heartbeats
 
@@ -61,7 +62,7 @@ def __print_heartbeat_status(heartbeats: List[Heartbeat]) -> None:
 
 
 def __download_heartbeats_periodically() -> None:
-    while True:
+    while is_running():
         __print_heartbeat_status(download_heartbeats())
         time.sleep(get_properties().heartbeat_fetch_period)
 
