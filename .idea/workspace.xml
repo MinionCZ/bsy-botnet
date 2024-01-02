@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Created properties wrapper">
-      <change afterPath="$PROJECT_DIR$/common/image_generators/image_generator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/utils/string_utils.py" afterDir="false" />
+    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Working uploading of commands">
+      <change afterPath="$PROJECT_DIR$/common/dataclasses/ping.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/dataclasses/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/dataclasses/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/dropbox_wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/dropbox_wrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/master/dropbox_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/master/dropbox_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/master/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +31,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2aIbISX4AEgZYjxhJZET4opRRkN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -52,6 +52,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -130,7 +131,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1704008962623</updated>
-      <workItem from="1704008968494" duration="19551000" />
+      <workItem from="1704008968494" duration="20310000" />
+      <workItem from="1704199507745" duration="2757000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit">
       <option name="closed" value="true" />
@@ -196,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704035515614</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Working uploading of commands">
+      <option name="closed" value="true" />
+      <created>1704036652625</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1704036652625</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +221,8 @@
     <MESSAGE value="Prepared basic dropbox functionalities" />
     <MESSAGE value="Working dropbox master init" />
     <MESSAGE value="Created properties wrapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created properties wrapper" />
+    <MESSAGE value="Working uploading of commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working uploading of commands" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -225,7 +236,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/BotNet$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1704036534423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/master" />
+    <SUITE FILE_PATH="coverage/BotNet$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1704036570123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/master" />
     <SUITE FILE_PATH="coverage/BotNet$main.coverage" NAME="main Coverage Results" MODIFIED="1704012817203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

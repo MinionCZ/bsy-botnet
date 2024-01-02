@@ -19,7 +19,6 @@ class CommandExecutionRequest(BaseModel):
     param: str
 
 
-
 class CommandExecutionResult(BaseModel):
     bot_id: uuid.UUID
     command: CommandType

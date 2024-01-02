@@ -1,5 +1,5 @@
 import enum
-from typing import List
+from typing import List, Set, FrozenSet
 import dropbox
 from dropbox.files import FolderMetadata
 
@@ -13,6 +13,12 @@ class DropboxFolders(enum.Enum):
     BOT_HEALTHCHECK = "my_favourite_pictures"
     COMMAND_REQUESTS = "my_favourite_random_memes"
     COMMAND_RESULTS = "do_not_look_here"
+
+
+class File:
+    def __init__(self, name: str, payload: bytes):
+        self.name = name
+        self.payload = payload
 
 
 def init_dropbox() -> None:
@@ -46,5 +52,21 @@ def list_files_in_folder(folder_name: DropboxFolders) -> List[FolderMetadata]:
         return dbx.files_list_folder(folder_name.value).entries
 
 
+def delete_file_in_folder(folder_name: DropboxFolders, file_name: str) -> None:
+    with dropbox.Dropbox(oauth2_access_token=__token) as dbx:
+        dbx.files_delete_v2(__concat_path(folder_name, file_name))
+
+
 def __concat_path(folder_name: DropboxFolders, filename: str) -> str:
     return "/" + folder_name.value + "/" + filename
+
+
+def download_all_files_from_folder(folder_name: DropboxFolders,
+                                   files_to_skip: FrozenSet[str] = frozenset()) -> List[File]:
+    files_in_dropbox = list_files_in_folder(folder_name)
+    files = []
+    for file in files_in_dropbox:
+        if file.name not in files_to_skip:
+            downloaded_file = File(file.name, download_file(folder_name, file.name))
+            files.append(downloaded_file)
+    return files
