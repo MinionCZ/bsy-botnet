@@ -13,6 +13,11 @@ class CommandType(enum.Enum):
     EXEC = "exec"
 
 
+class CommandStatus(enum.Enum):
+    SUCCESS = "success"
+    ERROR = "error"
+
+
 class CommandExecutionRequest(BaseModel):
     bot_id: uuid.UUID
     command: CommandType
@@ -23,7 +28,10 @@ class CommandExecutionResult(BaseModel):
     bot_id: uuid.UUID
     command: CommandType
     param: str
+    status: CommandStatus
     results: List[str]
 
     def __str__(self) -> str:
-        return f"""Bot with ID: {self.bot_id}, successfully executed command: {self.command.value} {self.param} with results: {self.results}"""
+        if self.status == CommandStatus.SUCCESS:
+            return f"""Bot with ID: {self.bot_id}, successfully executed command: {self.command.value} {self.param} with results: {self.results}"""
+        return f"""Bot with ID: {self.bot_id}, executed command: {self.command.value} {self.param} with errors: {self.results}"""

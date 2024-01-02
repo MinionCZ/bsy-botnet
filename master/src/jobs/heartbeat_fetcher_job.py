@@ -1,4 +1,3 @@
-import datetime
 import math
 import threading
 import time
@@ -67,7 +66,7 @@ def __download_heartbeats_periodically() -> None:
         time.sleep(get_properties().heartbeat_fetch_period)
 
 
-def start_heartbeat_fetcher_job() -> None:
+def start_heartbeat_fetcher_job() -> threading.Thread:
     thread = threading.Thread(target=__download_heartbeats_periodically)
     thread.start()
-    # thread.join()
+    return thread

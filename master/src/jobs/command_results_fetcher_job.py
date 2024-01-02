@@ -13,7 +13,7 @@ def __fetch_command_results_periodically() -> None:
         sleep(get_properties().result_fetch_period)
 
 
-def start_command_results_fetcher_job() -> None:
+def start_command_results_fetcher_job() -> threading.Thread:
     thread = threading.Thread(target=__fetch_command_results_periodically)
     thread.start()
-    # thread.join()
+    return thread
