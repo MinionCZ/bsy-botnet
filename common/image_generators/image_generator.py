@@ -3,7 +3,8 @@ import random
 import numpy
 from PIL import Image
 
-from common.dataclasses.properties import get_property, Properties
+from common.image_generators.image_generator_mode import ImageGeneratorMode
+from master.src.dataclasses.properties import get_properties
 
 __DIVERGING_VALUE = 2.0
 __MAX_PIXEL_VALUE = 255
@@ -58,7 +59,7 @@ def __generate_random_image(horizontal_size: int, vertical_size: int) -> io.Byte
 
 
 def generate_image(horizontal_size: int, vertical_size: int) -> bytes:
-    if get_property(Properties.IMAGE_MODE) == "random":
+    if get_properties().image_generator_mode == ImageGeneratorMode.RANDOM:
         return __generate_random_image(horizontal_size, vertical_size).getbuffer().tobytes()
-    elif get_property(Properties.IMAGE_MODE) == "fractal":
+    elif get_properties().image_generator_mode == ImageGeneratorMode.FRACTAL:
         return __generate_fractal_image(horizontal_size, vertical_size).getbuffer().tobytes()

@@ -1,11 +1,9 @@
 import enum
-from typing import List, Set, FrozenSet
+from typing import List, FrozenSet
 import dropbox
 from dropbox.files import FolderMetadata
 
-from common.dataclasses.properties import get_property, Properties
-
-__token = ""
+from master.src.dataclasses.properties import get_properties
 
 
 class DropboxFolders(enum.Enum):
@@ -21,39 +19,34 @@ class File:
         self.payload = payload
 
 
-def init_dropbox() -> None:
-    global __token
-    __token = get_property(Properties.TOKEN)
-
-
 def list_files(path: str = "") -> List[FolderMetadata]:
-    with dropbox.Dropbox(oauth2_access_token=__token) as dbx:
+    with dropbox.Dropbox(oauth2_access_token=get_properties().token) as dbx:
         return dbx.files_list_folder(path).entries
 
 
 def create_folder(folder_name: DropboxFolders) -> None:
-    with dropbox.Dropbox(oauth2_access_token=__token) as dbx:
-        path = "/" + folder_name
+    with dropbox.Dropbox(oauth2_access_token=get_properties().token) as dbx:
+        path = "/" + folder_name.value
         dbx.files_create_folder_v2(path)
 
 
 def upload_file(folder_name: DropboxFolders, file_name: str, payload: bytes) -> None:
-    with dropbox.Dropbox(oauth2_access_token=__token) as dbx:
+    with dropbox.Dropbox(oauth2_access_token=get_properties().token) as dbx:
         dbx.files_upload(payload, __concat_path(folder_name, file_name))
 
 
 def download_file(folder_name: DropboxFolders, file_name: str) -> bytes:
-    with dropbox.Dropbox(oauth2_access_token=__token) as dbx:
+    with dropbox.Dropbox(oauth2_access_token=get_properties().token) as dbx:
         return dbx.files_download(__concat_path(folder_name, file_name))
 
 
 def list_files_in_folder(folder_name: DropboxFolders) -> List[FolderMetadata]:
-    with dropbox.Dropbox(oauth2_access_token=__token) as dbx:
+    with dropbox.Dropbox(oauth2_access_token=get_properties().token) as dbx:
         return dbx.files_list_folder(folder_name.value).entries
 
 
 def delete_file_in_folder(folder_name: DropboxFolders, file_name: str) -> None:
-    with dropbox.Dropbox(oauth2_access_token=__token) as dbx:
+    with dropbox.Dropbox(oauth2_access_token=get_properties().token) as dbx:
         dbx.files_delete_v2(__concat_path(folder_name, file_name))
 
 

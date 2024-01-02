@@ -1,5 +1,5 @@
 from typing import Set, List
-from common.dropbox_wrapper import init_dropbox, list_files, DropboxFolders, create_folder, upload_file, \
+from common.dropbox_wrapper import list_files, DropboxFolders, create_folder, upload_file, \
     list_files_in_folder, download_file, delete_file_in_folder, download_all_files_from_folder
 from common.dataclasses.commands import CommandExecutionRequest, CommandExecutionResult
 from common.image_generators.image_generator import generate_image
@@ -11,21 +11,22 @@ __IMAGE_VERTICAL_DIMENSION = 480
 
 
 def init_dropbox_handler() -> None:
-    init_dropbox()
     missing_folders = __get_missing_essential_folders_from_dropbox()
     __create_missing_folders(missing_folders)
 
 
-def __get_missing_essential_folders_from_dropbox() -> Set[DropboxFolders]:
-    files = list_files("")
+def __get_missing_essential_folders_from_dropbox() -> List[DropboxFolders]:
+    files = list_files()
     required_folders = set([folder.value for folder in DropboxFolders])
     for file in files:
         if file.name in required_folders:
             required_folders.remove(file.name)
-    return required_folders
+
+    missing_folders = [DropboxFolders(folder) for folder in required_folders]
+    return missing_folders
 
 
-def __create_missing_folders(folders: Set[DropboxFolders]) -> None:
+def __create_missing_folders(folders: List[DropboxFolders]) -> None:
     for folder in folders:
         create_folder(folder)
 
