@@ -1,3 +1,4 @@
+import datetime
 import math
 import threading
 import time
@@ -6,6 +7,13 @@ from typing import List
 from common.dataclasses.heartbeat import Heartbeat
 from master.src.dataclasses.properties import get_properties
 from master.src.dropbox_handler import download_heartbeats
+
+
+def __is_some_heartbeat_offline(heartbeats: List[Heartbeat]) -> bool:
+    for heartbeat in heartbeats:
+        if not heartbeat.is_online():
+            return True
+    return False
 
 
 def __generate_table_delimiter_and_return_fragment_lengths(table_row: str) -> (str, List[int]):
@@ -19,8 +27,8 @@ def __generate_table_delimiter_and_return_fragment_lengths(table_row: str) -> (s
 
 
 def __format_word_to_fit_gap(word: str, gap_width: int) -> str:
-    spaces_before_word = math.ceil((gap_width - len(word)) / 2)
-    spaces_after_word = math.floor((gap_width - len(word)) / 2)
+    spaces_before_word = math.floor((gap_width - len(word)) / 2)
+    spaces_after_word = math.ceil((gap_width - len(word)) / 2)
     return " " * spaces_before_word + word + " " * spaces_after_word
 
 
@@ -40,9 +48,13 @@ def __print_heartbeat_status(heartbeats: List[Heartbeat]) -> None:
         print("No heartbeats found")
         return
     heartbeats.sort(key=lambda heartbeat: heartbeat.heartbeat_timestamp, reverse=True)
-    heartbeats_as_table_lines = list(map(lambda heartbeat: heartbeat.map_to_table_row(), heartbeats))
+    is_some_heartbeat_offline = __is_some_heartbeat_offline(heartbeats)
+    heartbeats_as_table_lines = list(
+
+        map(lambda heartbeat: heartbeat.map_to_table_row(is_some_heartbeat_offline), heartbeats))
+
     table_delimiter, payload_sizes = __generate_table_delimiter_and_return_fragment_lengths(
-        heartbeats_as_table_lines[0])
+        max(heartbeats_as_table_lines))
     __print_header(table_delimiter, payload_sizes)
     for heartbeat_line in heartbeats_as_table_lines:
         print(heartbeat_line)

@@ -18,7 +18,7 @@ def main():
     start_heartbeat_fetcher_job()
     brh = insert_heartbeat_into_image(generate_image(640, 640),
                                       Heartbeat(bot_id=uuid.uuid4(), heartbeat_timestamp=datetime.datetime.now()))
-    with open("../images/heart2.png", "wb") as out:
+    with open("../images/heart3.png", "wb") as out:
         out.write(brh)
 
 
