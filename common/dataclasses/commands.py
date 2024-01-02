@@ -25,3 +25,5 @@ class CommandExecutionResult(BaseModel):
     param: str
     results: List[str]
 
+    def __str__(self) -> str:
+        return f"""Bot with ID: {self.bot_id}, successfully executed command: {self.command.value} {self.param} with results: {self.results}"""

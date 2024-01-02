@@ -1,7 +1,7 @@
 import enum
 from typing import List, FrozenSet
 import dropbox
-from dropbox.files import FolderMetadata
+from dropbox.files import FolderMetadata, FileMetadata
 
 from master.src.dataclasses.properties import get_properties
 
@@ -37,12 +37,13 @@ def upload_file(folder_name: DropboxFolders, file_name: str, payload: bytes) -> 
 
 def download_file(folder_name: DropboxFolders, file_name: str) -> bytes:
     with dropbox.Dropbox(oauth2_access_token=get_properties().token) as dbx:
-        return dbx.files_download(__concat_path(folder_name, file_name))
+        _, response = dbx.files_download(__concat_path(folder_name, file_name))
+        return response.content
 
 
 def list_files_in_folder(folder_name: DropboxFolders) -> List[FolderMetadata]:
     with dropbox.Dropbox(oauth2_access_token=get_properties().token) as dbx:
-        return dbx.files_list_folder(folder_name.value).entries
+        return dbx.files_list_folder("/" + folder_name.value).entries
 
 
 def delete_file_in_folder(folder_name: DropboxFolders, file_name: str) -> None:
@@ -60,6 +61,6 @@ def download_all_files_from_folder(folder_name: DropboxFolders,
     files = []
     for file in files_in_dropbox:
         if file.name not in files_to_skip:
-            downloaded_file = File(file.name, download_file(folder_name, file.name))
-            files.append(downloaded_file)
+            downloaded_file = download_file(folder_name, file.name)
+            files.append(File(file.name, downloaded_file))
     return files
