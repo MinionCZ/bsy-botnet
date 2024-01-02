@@ -4,7 +4,7 @@ import time
 from typing import List
 
 from common.dataclasses.heartbeat import Heartbeat
-from master.src.dataclasses.context import is_running
+from master.src.dataclasses.context import is_running, update_online_bots
 from master.src.dataclasses.properties import get_properties
 from master.src.dropbox_handler import download_heartbeats
 
@@ -50,7 +50,6 @@ def __print_heartbeat_status(heartbeats: List[Heartbeat]) -> None:
     heartbeats.sort(key=lambda heartbeat: heartbeat.heartbeat_timestamp, reverse=True)
     is_some_heartbeat_offline = __is_some_heartbeat_offline(heartbeats)
     heartbeats_as_table_lines = list(
-
         map(lambda heartbeat: heartbeat.map_to_table_row(is_some_heartbeat_offline), heartbeats))
 
     table_delimiter, payload_sizes = __generate_table_delimiter_and_return_fragment_lengths(
@@ -63,7 +62,10 @@ def __print_heartbeat_status(heartbeats: List[Heartbeat]) -> None:
 
 def __download_heartbeats_periodically() -> None:
     while is_running():
-        __print_heartbeat_status(download_heartbeats())
+        downloaded_heartbeats = download_heartbeats()
+        bots_ids = list(map(lambda heartbeat: heartbeat.bot_id, downloaded_heartbeats))
+        update_online_bots(bots_ids)
+        __print_heartbeat_status(downloaded_heartbeats)
         time.sleep(get_properties().heartbeat_fetch_period)
 
 
