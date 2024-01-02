@@ -8,7 +8,7 @@ from master.src.dataclasses.properties import get_properties
 
 class DropboxFolders(enum.Enum):
     COPIED_USER_FILES = "my_favourite_files"
-    BOT_HEALTHCHECK = "my_favourite_pictures"
+    BOT_HEARTBEATS = "my_favourite_pictures"
     COMMAND_REQUESTS = "my_favourite_random_memes"
     COMMAND_RESULTS = "do_not_look_here"
 

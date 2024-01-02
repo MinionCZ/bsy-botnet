@@ -3,6 +3,7 @@ import io
 import stegano
 
 from common.dataclasses.commands import CommandExecutionRequest, CommandExecutionResult
+from common.dataclasses.heartbeat import Heartbeat
 
 
 def __hide_message_to_image(message: str, image: bytes) -> bytes:
@@ -34,4 +35,10 @@ def read_command_result_from_image(image: bytes) -> CommandExecutionResult:
     return CommandExecutionResult.model_validate_json(decoded_json)
 
 
+def insert_heartbeat_into_image(image: bytes, heartbeat: Heartbeat) -> bytes:
+    return __hide_message_to_image(heartbeat.model_dump_json(), image)
 
+
+def read_heartbeat_from_image(image: bytes) -> Heartbeat:
+    decoded_json = __decode_message_from_image(image)
+    return Heartbeat.model_validate_json(decoded_json)

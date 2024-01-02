@@ -16,4 +16,4 @@ def __fetch_command_results_periodically() -> None:
 def start_command_results_fetcher_job() -> None:
     thread = threading.Thread(target=__fetch_command_results_periodically)
     thread.start()
-    thread.join()
+    # thread.join()
