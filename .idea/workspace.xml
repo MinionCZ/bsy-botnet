@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Working notification of executor thread">
+    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Prepared ls">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/slave/src/jobs/command_executor_job.py" beforeDir="false" afterPath="$PROJECT_DIR$/slave/src/jobs/command_executor_job.py" afterDir="false" />
     </list>
@@ -194,7 +194,7 @@
       <updated>1704008962623</updated>
       <workItem from="1704008968494" duration="20310000" />
       <workItem from="1704199507745" duration="23859000" />
-      <workItem from="1704287906006" duration="17341000" />
+      <workItem from="1704287906006" duration="18052000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit">
       <option name="closed" value="true" />
@@ -420,14 +420,21 @@
       <option name="project" value="LOCAL" />
       <updated>1704305876436</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Prepared ls">
+      <option name="closed" value="true" />
+      <created>1704306874526</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1704306874526</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Working steganography.py" />
     <MESSAGE value="Working saving commands in json into images" />
     <MESSAGE value="Working reading of token from file" />
     <MESSAGE value="Prepared basic dropbox functionalities" />
@@ -452,7 +459,8 @@
     <MESSAGE value="Refactor heartbeat on master" />
     <MESSAGE value="Working downloading of commands from master" />
     <MESSAGE value="Working notification of executor thread" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working notification of executor thread" />
+    <MESSAGE value="Prepared ls" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prepared ls" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/BotNet$main__1_.coverage" NAME="master Coverage Results" MODIFIED="1704305208875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

