@@ -1,8 +1,8 @@
 import uuid
 from typing import FrozenSet, List
 
-from common.dataclasses.commands import CommandTypes, CommandExecutionRequest
-from master.src.dataclasses.context import is_running, turn_off_master, get_online_bots
+from common.data.commands import CommandTypes, CommandExecutionRequest
+from master.src.data.context import is_running, turn_off_master, get_online_bots
 from master.src.dropbox_handler import upload_command_to_dropbox
 from master.src.input.input_handler_definitions import InputStates, InputHandlerState, InputCommandTypes
 

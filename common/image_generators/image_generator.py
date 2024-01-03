@@ -4,7 +4,7 @@ import numpy
 from PIL import Image
 
 from common.image_generators.image_generator_mode import ImageGeneratorMode
-from master.src.dataclasses.properties import get_properties
+from master.src.data.properties import get_properties
 
 __DIVERGING_VALUE = 2.0
 __MAX_PIXEL_VALUE = 255

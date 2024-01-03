@@ -1,9 +1,9 @@
-from typing import Set, List
+from typing import List
 
-from common.dataclasses.heartbeat import Heartbeat
+from common.data.heartbeat import Heartbeat
 from common.dropbox_wrapper import list_files, DropboxFolders, create_folder, upload_file, \
     list_files_in_folder, download_file, delete_file_in_folder, download_all_files_from_folder
-from common.dataclasses.commands import CommandExecutionRequest, CommandExecutionResult
+from common.data.commands import CommandExecutionRequest, CommandExecutionResult
 from common.image_generators.image_generator import generate_image
 from common.steganography import insert_command_request_into_image, read_command_result_from_image, \
     read_heartbeat_from_image

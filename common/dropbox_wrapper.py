@@ -3,7 +3,7 @@ from typing import List, FrozenSet
 import dropbox
 from dropbox.files import FolderMetadata, FileMetadata
 
-from master.src.dataclasses.properties import get_properties
+from master.src.data.properties import get_properties
 
 
 class DropboxFolders(enum.Enum):

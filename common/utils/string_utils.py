@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from common.image_generators.image_generator_mode import ImageGeneratorMode
-from master.src.dataclasses.properties import get_properties
+from master.src.data.properties import get_properties
 
 
 def generate_unique_image_name() -> str:

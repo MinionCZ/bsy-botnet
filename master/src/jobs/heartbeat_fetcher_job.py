@@ -1,17 +1,28 @@
+import datetime
 import math
 import threading
 import time
-from typing import List
+from typing import List, Tuple
 
-from common.dataclasses.heartbeat import Heartbeat
-from master.src.dataclasses.context import is_running, update_online_bots
-from master.src.dataclasses.properties import get_properties
+from common.data.heartbeat import Heartbeat
+from master.src.data.context import is_running, update_online_bots
+from master.src.data.properties import get_properties
 from master.src.dropbox_handler import download_heartbeats
 
 
-def __is_some_heartbeat_offline(heartbeats: List[Heartbeat]) -> bool:
-    for heartbeat in heartbeats:
-        if not heartbeat.is_online():
+def __mark_heartbeats_with_bot_status(heartbeats: List[Heartbeat]) -> List[Tuple[Heartbeat, bool]]:
+    cutoff_timestamp = datetime.datetime.now() - datetime.timedelta(
+        seconds=get_properties().bot_maximum_heartbeat_delay)
+
+    def check_if_bot_is_online(heartbeat: Heartbeat) -> bool:
+        return heartbeat.heartbeat_timestamp > cutoff_timestamp
+
+    return list(map(lambda hb: (hb, check_if_bot_is_online(hb)), heartbeats))
+
+
+def __check_if_some_bot_is_offline(bots_with_statuses: List[Tuple[Heartbeat, bool]]) -> bool:
+    for _, is_online in bots_with_statuses:
+        if not is_online:
             return True
     return False
 
@@ -43,14 +54,27 @@ def __print_header(table_delimiter: str, payload_sizes: List[int]) -> None:
     print(table_delimiter)
 
 
+def __get_correct_version_of_online(is_some_heartbeat_offline: bool) -> str:
+    return "ONLINE " if is_some_heartbeat_offline else "ONLINE"
+
+
+def __map_to_table_row(heartbeat: Heartbeat, is_bot_online: bool, is_some_bot_offline: bool) -> str:
+    formatted_timestamp = heartbeat.heartbeat_timestamp.strftime("%d.%m.%Y %H:%M:%S")
+    status = __get_correct_version_of_online(
+        is_some_bot_offline) if is_bot_online else "OFFLINE"
+    return f'| {heartbeat.bot_id} | {formatted_timestamp} | {status} |'
+
+
 def __print_heartbeat_status(heartbeats: List[Heartbeat]) -> None:
     if not heartbeats:
         print("No heartbeats found")
         return
-    heartbeats.sort(key=lambda heartbeat: heartbeat.heartbeat_timestamp, reverse=True)
-    is_some_heartbeat_offline = __is_some_heartbeat_offline(heartbeats)
-    heartbeats_as_table_lines = list(
-        map(lambda heartbeat: heartbeat.map_to_table_row(is_some_heartbeat_offline), heartbeats))
+    heartbeats.sort(key=lambda hb: hb.heartbeat_timestamp, reverse=True)
+    heartbeats_with_statuses = __mark_heartbeats_with_bot_status(heartbeats)
+    is_some_bot_offline = __check_if_some_bot_is_offline(heartbeats_with_statuses)
+    heartbeats_as_table_lines = []
+    for heartbeat, online in heartbeats_with_statuses:
+        heartbeats_as_table_lines.append(__map_to_table_row(heartbeat, online, is_some_bot_offline))
 
     table_delimiter, payload_sizes = __generate_table_delimiter_and_return_fragment_lengths(
         max(heartbeats_as_table_lines))

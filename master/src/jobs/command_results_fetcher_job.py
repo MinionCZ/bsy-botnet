@@ -1,8 +1,8 @@
 import threading
 from time import sleep
 
-from master.src.dataclasses.context import is_running
-from master.src.dataclasses.properties import get_properties
+from master.src.data.context import is_running
+from master.src.data.properties import get_properties
 from master.src.dropbox_handler import download_and_delete_command_execution_results_from_dropbox
 
 

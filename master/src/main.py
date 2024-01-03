@@ -4,6 +4,7 @@ from master.src.jobs.command_results_fetcher_job import start_command_results_fe
 from master.src.jobs.heartbeat_fetcher_job import start_heartbeat_fetcher_job
 
 
+# Need to run as module python -m master.src.main from
 def main():
     init_dropbox_handler()
     threads = [start_command_results_fetcher_job(), start_heartbeat_fetcher_job()]

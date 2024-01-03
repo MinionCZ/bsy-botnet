@@ -2,8 +2,8 @@ import io
 
 import stegano
 
-from common.dataclasses.commands import CommandExecutionRequest, CommandExecutionResult
-from common.dataclasses.heartbeat import Heartbeat
+from common.data.commands import CommandExecutionRequest, CommandExecutionResult
+from common.data.heartbeat import Heartbeat
 
 
 def __hide_message_to_image(message: str, image: bytes) -> bytes:
