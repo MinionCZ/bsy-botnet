@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Prepared execution of ls, w, id and exec">
+    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Working ls">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slave/src/dropbox_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/slave/src/dropbox_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/data/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/data/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/steganography.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/steganography.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/slave/src/jobs/command_executor_job.py" beforeDir="false" afterPath="$PROJECT_DIR$/slave/src/jobs/command_executor_job.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +73,7 @@
       <recent name="$PROJECT_DIR$/common/image_generators" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.slave">
+  <component name="RunManager" selected="Python.master2">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BotNet" />
       <option name="ENV_FILES" value="" />
@@ -195,7 +196,7 @@
       <updated>1704008962623</updated>
       <workItem from="1704008968494" duration="20310000" />
       <workItem from="1704199507745" duration="23859000" />
-      <workItem from="1704287906006" duration="19778000" />
+      <workItem from="1704287906006" duration="22149000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit">
       <option name="closed" value="true" />
@@ -445,14 +446,21 @@
       <option name="project" value="LOCAL" />
       <updated>1704308496081</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Working ls">
+      <option name="closed" value="true" />
+      <created>1704309575359</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1704309575359</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Prepared basic dropbox functionalities" />
     <MESSAGE value="Working dropbox master init" />
     <MESSAGE value="Created properties wrapper" />
     <MESSAGE value="Working uploading of commands" />
@@ -477,11 +485,12 @@
     <MESSAGE value="Prepared ls" />
     <MESSAGE value="Prepared execute w" />
     <MESSAGE value="Prepared execution of ls, w, id and exec" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prepared execution of ls, w, id and exec" />
+    <MESSAGE value="Working ls" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working ls" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/BotNet$main__1_.coverage" NAME="master Coverage Results" MODIFIED="1704309168357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BotNet$master2.coverage" NAME="master2 Coverage Results" MODIFIED="1704308503260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BotNet$main.coverage" NAME="slave Coverage Results" MODIFIED="1704309385347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BotNet$master2.coverage" NAME="master2 Coverage Results" MODIFIED="1704311482695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BotNet$main.coverage" NAME="slave Coverage Results" MODIFIED="1704311704437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
