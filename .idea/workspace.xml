@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Inited slave">
-      <change afterPath="$PROJECT_DIR$/slave/resources/properties.example.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/slave/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/slave/src/data/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/slave/src/data/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/slave/src/data/properties.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Prepared context to securely storing downloaded commands">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slave/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/slave/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slave/src/data/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/slave/src/data/context.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +193,7 @@
       <updated>1704008962623</updated>
       <workItem from="1704008968494" duration="20310000" />
       <workItem from="1704199507745" duration="23859000" />
-      <workItem from="1704287906006" duration="8746000" />
+      <workItem from="1704287906006" duration="9509000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit">
       <option name="closed" value="true" />
@@ -377,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704295465101</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Prepared context to securely storing downloaded commands">
+      <option name="closed" value="true" />
+      <created>1704296959261</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1704296959261</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,7 +407,8 @@
     <MESSAGE value="Working sending commands to remote" />
     <MESSAGE value="Successfully fixed python packages" />
     <MESSAGE value="Inited slave" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inited slave" />
+    <MESSAGE value="Prepared context to securely storing downloaded commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prepared context to securely storing downloaded commands" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/BotNet$main__1_.coverage" NAME="master Coverage Results" MODIFIED="1704291122736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
