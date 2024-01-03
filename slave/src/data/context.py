@@ -35,3 +35,8 @@ def get_commands_from_queue() -> List[CommandExecutionRequest]:
 def get_new_commands_arrived_condition() -> threading.Condition:
     global __new_commands_arrived
     return __new_commands_arrived
+
+
+def get_bot_id() -> uuid.UUID:
+    global __bot_id
+    return copy.deepcopy(__bot_id)

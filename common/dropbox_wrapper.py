@@ -66,7 +66,7 @@ def download_all_files_from_folder(folder_name: DropboxFolders,
     return files
 
 
-def download_file_to_path(folder_name: DropboxFolders, file_name: str, download_file_path: str) -> str:
+def download_file_to_path(folder_name: DropboxFolders, file_name: str, download_file_path: str) -> None:
     with dropbox.Dropbox(oauth2_access_token=get_properties().token) as dbx:
         path_on_dropbox = __concat_path(folder_name, file_name)
         dbx.files_download_to_file(download_file_path, path_on_dropbox)

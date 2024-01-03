@@ -2,6 +2,9 @@ import datetime
 import math
 import threading
 import time
+import uuid
+
+import pytz
 from typing import List, Tuple
 
 from common.data.heartbeat import Heartbeat
@@ -11,7 +14,7 @@ from master.src.dropbox_handler import download_heartbeats
 
 
 def __mark_heartbeats_with_bot_status(heartbeats: List[Heartbeat]) -> List[Tuple[Heartbeat, bool]]:
-    cutoff_timestamp = datetime.datetime.now() - datetime.timedelta(
+    cutoff_timestamp = datetime.datetime.now(tz=pytz.utc) - datetime.timedelta(
         seconds=get_properties().bot_maximum_heartbeat_delay)
 
     def check_if_bot_is_online(heartbeat: Heartbeat) -> bool:
@@ -84,11 +87,19 @@ def __print_heartbeat_status(heartbeats: List[Heartbeat]) -> None:
         print(table_delimiter)
 
 
+def __filter_out_active_bots(heartbeats: List[Heartbeat]) -> List[uuid.UUID]:
+    marked_bots = __mark_heartbeats_with_bot_status(heartbeats)
+    online_bot_ids = []
+    for bot, online in marked_bots:
+        if online:
+            online_bot_ids.append(bot.bot_id)
+    return online_bot_ids
+
+
 def __download_heartbeats_periodically() -> None:
     while is_running():
         downloaded_heartbeats = download_heartbeats()
-        bots_ids = list(map(lambda heartbeat: heartbeat.bot_id, downloaded_heartbeats))
-        update_online_bots(bots_ids)
+        update_online_bots(__filter_out_active_bots(downloaded_heartbeats))
         __print_heartbeat_status(downloaded_heartbeats)
         time.sleep(get_properties().heartbeat_fetch_period)
 
