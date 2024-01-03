@@ -1,8 +1,9 @@
+from slave.src.jobs.command_execution_requests_fetcher_job import start_command_execution_requests_fetcher_job
 from slave.src.jobs.heartbeat_job import start_heartbeat_job
 
 
 def main():
-    threads = [start_heartbeat_job()]
+    threads = [start_heartbeat_job(), start_command_execution_requests_fetcher_job()]
     for thread in threads:
         thread.join()
 

@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Working slave uploading heartbeat to dropbox">
+    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Refactor heartbeat on master">
+      <change afterPath="$PROJECT_DIR$/slave/src/jobs/command_execution_requests_fetcher_job.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/data/heartbeat.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/data/heartbeat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/src/data/properties.py" beforeDir="false" afterPath="$PROJECT_DIR$/master/src/data/properties.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/src/dropbox_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/master/src/dropbox_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master/src/jobs/heartbeat_fetcher_job.py" beforeDir="false" afterPath="$PROJECT_DIR$/master/src/jobs/heartbeat_fetcher_job.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slave/src/dropbox_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/slave/src/dropbox_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slave/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/slave/src/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +196,7 @@
       <updated>1704008962623</updated>
       <workItem from="1704008968494" duration="20310000" />
       <workItem from="1704199507745" duration="23859000" />
-      <workItem from="1704287906006" duration="12356000" />
+      <workItem from="1704287906006" duration="14550000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit">
       <option name="closed" value="true" />
@@ -399,7 +398,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704299607067</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Refactor heartbeat on master">
+      <option name="closed" value="true" />
+      <created>1704300489524</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1704300489524</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -430,11 +437,12 @@
     <MESSAGE value="Prepared context to securely storing downloaded commands" />
     <MESSAGE value="Upgraded slave context.py" />
     <MESSAGE value="Working slave uploading heartbeat to dropbox" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working slave uploading heartbeat to dropbox" />
+    <MESSAGE value="Refactor heartbeat on master" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor heartbeat on master" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/BotNet$main__1_.coverage" NAME="master Coverage Results" MODIFIED="1704300233474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BotNet$main__1_.coverage" NAME="master Coverage Results" MODIFIED="1704302443716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BotNet$master2.coverage" NAME="master2 Coverage Results" MODIFIED="1704295327662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BotNet$main.coverage" NAME="slave Coverage Results" MODIFIED="1704299587659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BotNet$main.coverage" NAME="slave Coverage Results" MODIFIED="1704302439339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
