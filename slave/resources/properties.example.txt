@@ -1,0 +1,7 @@
+Create file properties.json in this dir and paste there this lines to add token to application
+{
+  "token": "your token here",
+  "image_generator_mode": "fractal",
+  "result_fetch_period": 15,
+  "ping_fetch_period": 15
+}
