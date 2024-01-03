@@ -17,7 +17,7 @@ def __remove_old_resolved_files(files_available_to_download: Set[str]) -> None:
             __resolved_files.remove(file)
 
 
-def filter_commands_for_bot(commands: List[Tuple[str, CommandExecutionRequest]]) -> List[CommandExecutionRequest]:
+def __filter_commands_for_bot(commands: List[Tuple[str, CommandExecutionRequest]]) -> List[CommandExecutionRequest]:
     commands_for_bot = []
     bot_id = get_bot_id()
     for filename, command in commands:
@@ -32,10 +32,11 @@ def __fetch_command_execution_requests_periodically() -> None:
         files_available_to_download = get_names_of_all_files_in_folder(DropboxFolders.COMMAND_REQUESTS)
         __remove_old_resolved_files(set(files_available_to_download))
         downloaded_command_requests = download_all_viable_command_requests(frozenset(__resolved_files))
-        commands_for_bot = filter_commands_for_bot(downloaded_command_requests)
+        commands_for_bot = __filter_commands_for_bot(downloaded_command_requests)
         if commands_for_bot:
             add_commands_to_queue(commands_for_bot)
-            get_new_commands_arrived_condition().notify_all()
+            with get_new_commands_arrived_condition():
+                get_new_commands_arrived_condition().notify_all()
         sleep(get_properties().command_fetch_period)
 
 

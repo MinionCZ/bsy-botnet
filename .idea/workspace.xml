@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Refactor heartbeat on master">
-      <change afterPath="$PROJECT_DIR$/slave/src/jobs/command_execution_requests_fetcher_job.py" afterDir="false" />
+    <list default="true" id="eb93af21-4926-44a6-9869-6c077949e8ff" name="Changes" comment="Working downloading of commands from master">
+      <change afterPath="$PROJECT_DIR$/slave/src/jobs/command_executor_job.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slave/src/dropbox_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/slave/src/dropbox_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slave/src/jobs/command_execution_requests_fetcher_job.py" beforeDir="false" afterPath="$PROJECT_DIR$/slave/src/jobs/command_execution_requests_fetcher_job.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/slave/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/slave/src/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +73,7 @@
       <recent name="$PROJECT_DIR$/common/image_generators" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.master">
+  <component name="RunManager" selected="Python.master2">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BotNet" />
       <option name="ENV_FILES" value="" />
@@ -174,8 +174,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.master" />
         <item itemvalue="Python.slave" />
+        <item itemvalue="Python.master" />
       </list>
     </recent_temporary>
   </component>
@@ -196,7 +196,7 @@
       <updated>1704008962623</updated>
       <workItem from="1704008968494" duration="20310000" />
       <workItem from="1704199507745" duration="23859000" />
-      <workItem from="1704287906006" duration="14550000" />
+      <workItem from="1704287906006" duration="16662000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit">
       <option name="closed" value="true" />
@@ -406,14 +406,21 @@
       <option name="project" value="LOCAL" />
       <updated>1704300489524</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Working downloading of commands from master">
+      <option name="closed" value="true" />
+      <created>1704302718825</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1704302718825</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Init commit" />
     <MESSAGE value="Prepared image generators" />
     <MESSAGE value="Working steganography.py" />
     <MESSAGE value="Working saving commands in json into images" />
@@ -438,11 +445,12 @@
     <MESSAGE value="Upgraded slave context.py" />
     <MESSAGE value="Working slave uploading heartbeat to dropbox" />
     <MESSAGE value="Refactor heartbeat on master" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor heartbeat on master" />
+    <MESSAGE value="Working downloading of commands from master" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working downloading of commands from master" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/BotNet$main__1_.coverage" NAME="master Coverage Results" MODIFIED="1704302443716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BotNet$master2.coverage" NAME="master2 Coverage Results" MODIFIED="1704295327662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BotNet$main.coverage" NAME="slave Coverage Results" MODIFIED="1704302439339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BotNet$main__1_.coverage" NAME="master Coverage Results" MODIFIED="1704305208875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BotNet$master2.coverage" NAME="master2 Coverage Results" MODIFIED="1704305711933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BotNet$main.coverage" NAME="slave Coverage Results" MODIFIED="1704305693715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
