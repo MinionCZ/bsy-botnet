@@ -52,9 +52,11 @@ def download_and_delete_command_execution_results_from_dropbox() -> List[Command
     return command_results
 
 
-def download_heartbeats() -> List[Heartbeat]:
+def download_and_delete_heartbeats() -> List[Heartbeat]:
     downloaded_files = download_all_files_from_folder(DropboxFolders.BOT_HEARTBEATS)
-    heartbeats = map(lambda file: read_heartbeat_from_image(file.payload), downloaded_files)
+    heartbeats = set(map(lambda fle: read_heartbeat_from_image(fle.payload), downloaded_files))
+    for file in downloaded_files:
+        delete_file_in_folder(DropboxFolders.BOT_HEARTBEATS, file.name)
     return list(heartbeats)
 
 

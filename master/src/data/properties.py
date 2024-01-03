@@ -12,13 +12,11 @@ class Properties(BaseModel):
     image_generator_mode: ImageGeneratorMode
     result_fetch_period: int
     heartbeat_fetch_period: int
-    bot_maximum_heartbeat_delay: int
     copied_files_fetch_interval: int
 
     @classmethod
     @field_validator("result_fetch_period",
                      "heartbeat_fetch_period",
-                     "bot_maximum_heartbeat_delay",
                      "copied_files_fetch_interval")
     def must_be_positive_value(cls, value: int) -> int:
         if value <= 0:
