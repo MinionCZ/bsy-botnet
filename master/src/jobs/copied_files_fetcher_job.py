@@ -1,9 +1,9 @@
 import threading
 from time import sleep
 
-from data.context import is_running
-from data.properties import get_properties
-from dropbox_handler import download_copied_files_from_dropbox
+from master.src.data.context import is_running
+from master.src.data.properties import get_properties
+from master.src.dropbox_handler import download_copied_files_from_dropbox
 
 
 def __fetch_command_results_periodically() -> None:

@@ -1,4 +1,4 @@
-from jobs.copied_files_fetcher_job import start_copied_files_fetcher_job
+from master.src.jobs.copied_files_fetcher_job import start_copied_files_fetcher_job
 from master.src.dropbox_handler import init_dropbox_handler
 from master.src.input.input_handler import handle_user_input
 from master.src.jobs.command_results_fetcher_job import start_command_results_fetcher_job

@@ -8,7 +8,7 @@ from common.image_generators.image_generator import generate_image
 from common.steganography import insert_command_request_into_image, read_command_result_from_image, \
     read_heartbeat_from_image
 from common.utils.string_utils import generate_unique_image_name
-from data.properties import get_properties
+from master.src.data.properties import get_properties
 
 __IMAGE_HORIZONTAL_DIMENSION = 640
 __IMAGE_VERTICAL_DIMENSION = 480
