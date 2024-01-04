@@ -1,7 +1,10 @@
-Create file properties.json in this dir and paste there this lines to add token to application
+Create file properties.json in this dir and paste there this json.
+
+
 {
-  "token": "your token here",
+  "token": "yout token here",
   "image_generator_mode": "fractal",
   "result_fetch_period": 15,
-  "ping_fetch_period": 15
+  "heartbeat_fetch_period": 60,
+  "copied_files_fetch_interval": 15
 }
